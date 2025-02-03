@@ -1,0 +1,16 @@
+{
+  "name": "luarmor-deploy-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Stefanuk12",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "fetch-rate-limit-util": "^4.4.0"
+  }
+}
