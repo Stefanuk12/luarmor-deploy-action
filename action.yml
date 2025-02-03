@@ -1,5 +1,8 @@
 name: "Luarmor Deploy"
 description: "Deploy your script to Luarmor"
+branding:
+  color: "yellow"
+  icon: "arrow-up-right"
 inputs:
   api-key:
     description: "The api key"
