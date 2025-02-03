@@ -3,9 +3,11 @@
 Deploy your script file to Luarmor.
 
 > [!WARNING]
-> You must self-host your GitHub runner and whitelist your server"s IP on the Luarmor site for this to work. This is due to limitations imposed by Luarmor themselves.
+> You must self-host your GitHub runner and whitelist your server's IP on the Luarmor site for this to work. This is due to limitations imposed by Luarmor themselves.
 
 ## Inputs
+
+![an image showing the project-id and script-id](./assets/inputsExample.png)
 
 ### `api-key`
 
@@ -17,7 +19,7 @@ Deploy your script file to Luarmor.
 
 ### `project-id`
 
-**Optional** The id of the project that the [script](#script-id). If this is not specified, it"s automatically resolved for you.
+**Optional** The id of the project that the [script](#script-id). If this is not specified, it's automatically resolved for you.
 
 ### `file`
 
