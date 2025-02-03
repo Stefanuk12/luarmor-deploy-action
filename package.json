@@ -1,12 +1,9 @@
 {
   "name": "luarmor-deploy-action",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
+  "description": "Deploy your script file to Luarmor.",
+  "main": "index.mjs",
+  "keywords": ["luarmor", "deploy", "action", "github", "stefanuk12"],
   "author": "Stefanuk12",
   "license": "MIT",
   "dependencies": {
