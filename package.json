@@ -1,13 +1,20 @@
 {
   "name": "luarmor-deploy-action",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Deploy your script file to Luarmor.",
   "main": "index.mjs",
-  "keywords": ["luarmor", "deploy", "action", "github", "stefanuk12"],
+  "keywords": [
+    "luarmor",
+    "deploy",
+    "action",
+    "github",
+    "stefanuk12"
+  ],
   "author": "Stefanuk12",
   "license": "MIT",
   "dependencies": {
+    "@2captcha/captcha-solver": "^1.3.0",
     "@actions/core": "^1.11.1",
-    "fetch-rate-limit-util": "^4.4.0"
+    "fetch-rate-limit-util": "^4.5.0"
   }
 }

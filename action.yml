@@ -4,6 +4,9 @@ branding:
   color: "yellow"
   icon: "arrow-up-right"
 inputs:
+  twocaptcha-api-key:
+    description: "Your API key for 2captcha"
+    required: true
   api-key:
     description: "The api key"
     required: true

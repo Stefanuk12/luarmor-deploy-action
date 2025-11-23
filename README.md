@@ -3,23 +3,31 @@
 Deploy your script file to Luarmor.
 
 > [!WARNING]
-> You must self-host your GitHub runner and whitelist your server's IP on the Luarmor site for this to work. This is due to limitations imposed by Luarmor themselves.
+> You must self-host your GitHub runner and whitelist your server's IP on the Luarmor site for this to work.
+> This is due to limitations imposed by Luarmor themselves.
 
 ## Inputs
 
 ![an image showing the project-id and script-id](./assets/inputsExample.png)
 
+### `twocaptcha-api-key`
+
+**Required** Your secret [2captcha](https://2captcha.com/enterpage) API key.
+This is required since Luarmor has added a Cloudflare Turnstile CAPTCHA to its update script endpoint.
+
 ### `api-key`
 
-**Required** Your secret Luarmor API key. This should be stored in GitHub secrets.
+**Required** Your secret Luarmor API key.
+This should be stored in GitHub secrets.
 
 ### `script-id`
 
-**Required** The id of the script you want to upload the [file](#file) to. 
+**Required** The id of the script you want to upload the [file](#file) to.
 
 ### `project-id`
 
-**Optional** The id of the project that the [script](#script-id). If this is not specified, it's automatically resolved for you.
+**Optional** The id of the project that the [script](#script-id).
+If this is not specified, it's automatically resolved for you.
 
 ### `file`
 
@@ -50,6 +58,7 @@ jobs:
     - name: Deploy to Luarmor
       uses: stefanuk12/luarmor-deploy-action@v1.0.0
       with:
+        twocaptcha-api-key: ${{ secrets.TWOCAPTCHA_API_KEY }}
         api-key: ${{ secrets.LUARMOR_API_KEY }}
         script-id: "your-script-id"
         project-id: "your-project-id" # Optional
