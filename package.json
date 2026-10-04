@@ -1,6 +1,6 @@
 {
   "name": "luarmor-deploy-action",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Deploy your script file to Luarmor.",
   "main": "index.mjs",
   "keywords": [

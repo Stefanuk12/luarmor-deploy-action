@@ -76,6 +76,7 @@ async function run() {
 
   // Parse the response, keeping the raw text for error messages
   const responseText = await updateResponse.text();
+  console.log(`Luarmor update response body: ${responseText}`);
   const responseBody = parseJson(responseText);
 
   // Stop immediately if the script is too large for the channel. Neither
