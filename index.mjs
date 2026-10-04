@@ -65,7 +65,10 @@ async function run() {
     customHeaders
   );
 
-  // Poll for the new version number, if was 504
+  console.log(`Luarmor responded to the update with HTTP ${updateResponse.status}`);
+
+  // A gateway timeout means Luarmor accepted the upload but is still processing
+  // it server-side; poll the version number instead of failing.
   if (updateResponse.status === 504) {
     await pollVersionNumber(apiKey, project.id, currentScript);
     return;
@@ -74,6 +77,27 @@ async function run() {
   // Parse the response, keeping the raw text for error messages
   const responseText = await updateResponse.text();
   const responseBody = parseJson(responseText);
+
+  // Stop immediately if the script is too large for the channel. Neither
+  // retrying nor polling can recover from this, so fail fast.
+  if (/too large for this channel/i.test(responseText)) {
+    throw new Error(
+      `Script is too large for this channel (HTTP ${updateResponse.status})`
+    );
+  }
+
+  // Bad request, usually an invalid API key
+  if (updateResponse.status === 400) {
+    throw new Error(`400, is your API key valid?${formatMessage(responseText)}`);
+  }
+  // Forbidden, usually an unwhitelisted IP
+  if (updateResponse.status === 403) {
+    throw new Error(
+      `403, is your IP whitelisted and is your API key correct?${formatMessage(
+        responseText
+      )}`
+    );
+  }
 
   if (!updateResponse.ok || !responseBody?.success) {
     throw new Error(
@@ -383,16 +407,14 @@ async function updateScript(
       .then((x) => x.data);
   }
 
-  // Update the script, returning the response
-  return await sendFetch(
-    pageUrl,
-    {
-      method: "PUT",
-      headers: { ...headers, ...customHeaders },
-      body: JSON.stringify(scriptData),
-    },
-    true
-  );
+  // Update the script with a single request. A gateway timeout is expected for
+  // large uploads and is handled by the caller, so this must not go through the
+  // retrying handler, which would re-upload on every 504 and multiply the wait.
+  return await fetch(pageUrl, {
+    method: "PUT",
+    headers: { ...headers, ...customHeaders },
+    body: JSON.stringify(scriptData),
+  });
 }
 
 // Run the entrypoint, handling errors
