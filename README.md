@@ -66,7 +66,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Deploy to Luarmor
-      uses: stefanuk12/luarmor-deploy-action@v1.0.0
+      uses: stefanuk12/luarmor-deploy-action@v2.1.0
       with:
         twocaptcha-api-key: ${{ secrets.TWOCAPTCHA_API_KEY }}
         api-key: ${{ secrets.LUARMOR_API_KEY }}
