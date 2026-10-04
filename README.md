@@ -12,8 +12,18 @@ Deploy your script file to Luarmor.
 
 ### `twocaptcha-api-key`
 
-**Required** Your secret [2captcha](https://2captcha.com/enterpage) API key.
+**Required, unless [`solve-captcha`](#solve-captcha) is `false`** Your secret [2captcha](https://2captcha.com/enterpage) API key.
 This is required since Luarmor has added a Cloudflare Turnstile CAPTCHA to its update script endpoint.
+
+### `solve-captcha`
+
+**Optional** Whether to solve the Cloudflare Turnstile CAPTCHA with 2captcha. Defaults to `true`.
+Set this to `false` if you don't need it.
+
+### `headers`
+
+**Optional** Extra headers to add to the upload request, as a JSON object.
+These are applied last, so they override the default headers.
 
 ### `api-key`
 

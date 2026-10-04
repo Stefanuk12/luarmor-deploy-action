@@ -5,8 +5,15 @@ branding:
   icon: "arrow-up-right"
 inputs:
   twocaptcha-api-key:
-    description: "Your API key for 2captcha"
-    required: true
+    description: "Your API key for 2captcha, required unless solve-captcha is false"
+    required: false
+  solve-captcha:
+    description: "Solve the Cloudflare Turnstile CAPTCHA with 2captcha"
+    required: false
+    default: "true"
+  headers:
+    description: "Extra headers for the upload request, as a JSON object. These override the default headers"
+    required: false
   api-key:
     description: "The api key"
     required: true
